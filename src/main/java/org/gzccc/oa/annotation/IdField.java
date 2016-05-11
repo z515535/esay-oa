@@ -8,7 +8,7 @@ import java.lang.annotation.Target;
 /**
  * @author 吴耿锋	
  * @version 2016年5月5日21:57:28
- * 自动生成id注解
+ * 自动生成id注解 
  */
 
 @Target(ElementType.FIELD)
