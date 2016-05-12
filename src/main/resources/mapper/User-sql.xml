@@ -1,13 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="org.gzccc.oa.dao.IUserDao">
-	<select id="findList" resultType="User">
-		<![CDATA[
-			select * from t_user where id <= #{id}
-		]]>
+
+	<sql id="find">
+		select * from t_user
+	</sql>
+	
+	<sql id="userTerm">
+		<where>
+			<if test="username != null">and username = #{username}</if>
+			<if test="password != null">and password = #{password}</if>
+		</where>
+	</sql>
+	
+	<select id="findList" resultType="User" >
+		<include refid="find"/>	<![CDATA[ where id <= #{id} ]]>
 	</select>
 	
 	<insert id="addUser">
 		insert into t_user values(#{id},#{username},#{password})
 	</insert>
+	
+	<select id="login" resultType="User">
+		<include refid="find"/>
+		<include refid="userTerm"/>
+	</select>
+	
 </mapper>

@@ -4,22 +4,9 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>Easy-oa</title>
+<title>Insert title here</title>
 </head>
 <body>
-	<form action="login" method="post">
-		<p>
-			<label>username</label>
-			<input type="text" name="username">
-		</p>
-		
-		<p>
-			<label>password</label>
-			<input type="password" name="password">
-		</p>
-		<p>
-			<input type="submit" value="login">
-		</p>
-	</form>
+	HOME
 </body>
 </html>
