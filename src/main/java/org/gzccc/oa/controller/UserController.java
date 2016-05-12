@@ -14,13 +14,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
-@RequestMapping("/user")
 public class UserController {
+	
 	@Inject
 	private IUserService userService;
 	
 	@ResponseBody
-	@RequestMapping("/list")
+	@RequestMapping("/user/list")
 	public List<User> list(Pages<User> pages){
 		Map<String,Object> param = new HashMap<String,Object>(1);
 		param.put("id", 1);

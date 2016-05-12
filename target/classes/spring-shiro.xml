@@ -11,11 +11,14 @@
          http://www.springframework.org/schema/tx 
          http://www.springframework.org/schema/tx/spring-tx-4.0.xsd">
          
+    <bean id="userRealm" class="org.gzccc.oa.realm.UserRealm">
+    </bean>
+         
     <!-- 使用 shiro web的 securityManager
     	 DefaultWebSecurityManager 提供了授权，认证，缓存等实现，功能够用
    	--> 
     <bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
-    	
+    	<property name="realm" ref="userRealm"/>
     </bean>
          
     <!-- shiro web 过滤器 -->   

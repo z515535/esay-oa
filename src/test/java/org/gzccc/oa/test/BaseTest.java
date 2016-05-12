@@ -45,5 +45,12 @@ public class BaseTest {
 			System.out.println(u);
 		}
 	}
+	
+	@Test
+	public void login(){
+		User user = new User("test","test");
+		System.out.println(userService.login(user));
+	}
+	
 
 }

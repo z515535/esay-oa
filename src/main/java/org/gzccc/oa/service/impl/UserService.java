@@ -11,8 +11,6 @@ import org.gzccc.oa.paging.Pages;
 import org.gzccc.oa.service.IUserService;
 import org.springframework.stereotype.Service;
 
-import com.github.pagehelper.Page;
-
 @Service("userService")
 public class UserService implements IUserService{
 	
@@ -25,6 +23,10 @@ public class UserService implements IUserService{
 
 	public void addUser(User user) {
 		userDao.addUser(user);
+	}
+
+	public User login(User user) {
+		return userDao.login(user);
 	}
 
 }
