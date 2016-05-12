@@ -16,7 +16,7 @@ public class UserRealm extends AuthorizingRealm{
 	@Inject
 	private IUserService userService;
 	/**
-	 * 用户授权
+	 * 用户授权 
 	 */
 	@Override
 	protected AuthorizationInfo doGetAuthorizationInfo(
