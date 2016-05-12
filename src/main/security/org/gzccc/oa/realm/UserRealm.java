@@ -34,6 +34,9 @@ public class UserRealm extends AuthorizingRealm{
 			AuthenticationToken token) throws AuthenticationException {
 		String username = token.getPrincipal().toString();
 		User user = userService.login(username);
+		if(null == user){
+			throw new RuntimeException("不存在此用户");
+		}
 		
 		SimpleAuthenticationInfo info = new SimpleAuthenticationInfo(user,user.getPassword()
 				,this.getName());
