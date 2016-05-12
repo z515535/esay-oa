@@ -10,8 +10,15 @@
          http://www.springframework.org/schema/aop/spring-aop-4.0.xsd
          http://www.springframework.org/schema/tx 
          http://www.springframework.org/schema/tx/spring-tx-4.0.xsd">
-         
+     
+     <!-- hash匹配器，用户密码加密匹配 -->
+    <bean id="hashMatcher" class="org.apache.shiro.authc.credential.HashedCredentialsMatcher">
+    	<!-- 设置加密方式 -->
+		<property name="hashAlgorithmName" value="md5" />
+	</bean>
+    
     <bean id="userRealm" class="org.gzccc.oa.realm.UserRealm">
+    	<property name="credentialsMatcher" ref="hashMatcher" />
     </bean>
          
     <!-- 使用 shiro web的 securityManager
@@ -19,6 +26,7 @@
    	--> 
     <bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
     	<property name="realm" ref="userRealm"/>
+    	
     </bean>
          
     <!-- shiro web 过滤器 -->   

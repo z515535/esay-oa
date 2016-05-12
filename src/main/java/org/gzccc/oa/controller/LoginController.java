@@ -24,11 +24,12 @@ public class LoginController {
 		UsernamePasswordToken token = new UsernamePasswordToken(username,password);
 		try {
 			subject.login(token);
+			System.out.println("success");
+			return "home";
 		} catch (AuthenticationException e) {
 			System.out.println("error");
 			e.printStackTrace();
 		}
-		System.out.println("success");
-		return "home";
+		return "../../index";
 	}
 }

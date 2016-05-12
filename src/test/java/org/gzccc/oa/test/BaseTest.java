@@ -24,11 +24,15 @@ public class BaseTest {
 	@Inject
 	private IUserService userService;
 
-	/*
-	 * @Test public void tran(){ User user = new User();
-	 * user.setUsername("test"); user.setPassword("test");
-	 * userService.addUser(user); }
-	 */
+	
+	  @Test 
+	  public void tran(){
+		  User user = new User();
+		  user.setUsername("z515535"); 
+		  user.setPassword("qq3410650");
+		  userService.addUser(user); 
+	  }
+	 
 
 	@Test
 	public void page() {
@@ -49,7 +53,7 @@ public class BaseTest {
 	@Test
 	public void login(){
 		User user = new User("test","test");
-		System.out.println(userService.login(user));
+		System.out.println(userService.login(""));
 	}
 	
 

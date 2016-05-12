@@ -9,6 +9,7 @@ import org.apache.shiro.authc.SimpleAuthenticationInfo;
 import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
+import org.apache.shiro.util.ByteSource;
 import org.gzccc.oa.bean.User;
 import org.gzccc.oa.service.IUserService;
 
@@ -32,11 +33,13 @@ public class UserRealm extends AuthorizingRealm{
 	protected AuthenticationInfo doGetAuthenticationInfo(
 			AuthenticationToken token) throws AuthenticationException {
 		String username = token.getPrincipal().toString();
-		String password = new String((char[])token.getCredentials());
-		User user = userService.login(new User(username,password));
+		User user = userService.login(username);
 		
-		SimpleAuthenticationInfo info = new SimpleAuthenticationInfo(user.getUsername(),user.getPassword()
+		SimpleAuthenticationInfo info = new SimpleAuthenticationInfo(user,user.getPassword()
 				,this.getName());
+		//这里盐值需要用字节byte
+		info.setCredentialsSalt(ByteSource.Util.bytes(user.getSalt()));
+		//这里返回后会和token里面的密码进行验证
 		return info;
 	}
 

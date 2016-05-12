@@ -18,12 +18,11 @@
 	</select>
 	
 	<insert id="addUser">
-		insert into t_user values(#{id},#{username},#{password})
+		insert into t_user values(#{id},#{username},#{password},#{salt})
 	</insert>
 	
 	<select id="login" resultType="User">
-		<include refid="find"/>
-		<include refid="userTerm"/>
+		<include refid="find"/> where username = #{username}
 	</select>
 	
 </mapper>

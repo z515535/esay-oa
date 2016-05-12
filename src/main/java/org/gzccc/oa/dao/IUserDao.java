@@ -10,5 +10,5 @@ public interface IUserDao {
 	
 	void addUser(User user);
 	
-	User login(User user);
+	User login(String username);
 }
