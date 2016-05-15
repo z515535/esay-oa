@@ -1,12 +1,11 @@
 package org.gzccc.oa.test;
 
+import java.lang.reflect.Method;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import javax.inject.Inject;
 
-import org.apache.ibatis.session.SqlSessionFactory;
 import org.gzccc.oa.bean.User;
 import org.gzccc.oa.paging.Pages;
 import org.gzccc.oa.service.IUserService;
@@ -15,11 +14,9 @@ import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import com.github.pagehelper.Page;
-import com.github.pagehelper.PageHelper;
 
 @RunWith(SpringJUnit4ClassRunner.class) // 表示继承了SpringJUnit4ClassRunner类
-@ContextConfiguration(locations = { "classpath:spring-mybatis.xml" })
+@ContextConfiguration(locations = {"classpath:spring-mybatis.xml"})
 public class BaseTest {
 	@Inject
 	private IUserService userService;
@@ -28,9 +25,10 @@ public class BaseTest {
 	  @Test 
 	  public void tran(){
 		  User user = new User();
-		  user.setUsername("z515535"); 
+		  user.setUsername("a515535"); 
 		  user.setPassword("qq3410650");
-		  userService.addUser(user); 
+		  //int result = userService.addUser(user);
+		 // System.out.println(result);
 	  }
 	 
 
@@ -54,6 +52,22 @@ public class BaseTest {
 	public void login(){
 		User user = new User("test","test");
 		System.out.println(userService.login(""));
+	}
+	
+	public void foo (String text,String aa){
+		System.out.println(text);
+		System.out.println(aa);
+	}
+	
+	@Test
+	public void invokes() throws Exception{
+		Method[] method = BaseTest.class.getMethods();
+		Map<String,Method> map = new HashMap<String,Method>();
+		for(Method m : method){
+			map.put(m.getName(), m);
+		}
+		Method me = map.get("foo");
+		me.invoke(this, "aaa","bbb");
 	}
 	
 

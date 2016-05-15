@@ -1,13 +1,22 @@
 package org.gzccc.oa.bean;
 
+
 import org.gzccc.oa.annotation.IdField;
+import org.hibernate.validator.constraints.Length;
+import org.hibernate.validator.constraints.NotEmpty;
+
 
 public class User {
 	@IdField
 	private String id;
+	@NotEmpty  
+	@Length(min=6,max=16)  
 	private String username;
 	private String password;
 	private String salt;
+	private String email;
+	private String mobile;
+	private String registerDate;
 	
 	public User(){}
 	
@@ -40,6 +49,29 @@ public class User {
 	public void setSalt(String salt) {
 		this.salt = salt;
 	}
-	
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	public String getMobile() {
+		return mobile;
+	}
+	public void setMobile(String mobile) {
+		this.mobile = mobile;
+	}
+	public String getRegisterDate() {
+		return registerDate;
+	}
+	public void setRegisterDate(String registerDate) {
+		this.registerDate = registerDate;
+	}
+
+	@Override
+	public String toString() {
+		return "User [id=" + id + ", username=" + username + ", password=" + password + ", salt=" + salt + ", email="
+				+ email + ", mobile=" + mobile + ", registerDate=" + registerDate + "]";
+	}
 	
 }

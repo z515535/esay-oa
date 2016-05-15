@@ -18,7 +18,7 @@ import com.github.pagehelper.PageHelper;
 */
 @Component
 @Aspect
-public class PagesInterceptor{
+public class PagesAspect{
 	
 	/**
 	 * 配置切入点 类级别
@@ -40,8 +40,6 @@ public class PagesInterceptor{
 	@Before("classPointcut() && methodPointcut()")
 	public void pageInit(JoinPoint point){
 		Object[] params = point.getArgs();	//获取参数
-		//System.out.println(args.length);
-		//System.out.println(pjp.getSignature().getName());
 		Pages<?> pages = isPage(params);
 		
 		if(null != pages){
