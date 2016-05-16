@@ -27,7 +27,7 @@ public class BaseTest {
 		  User user = new User();
 		  user.setUsername("a515535"); 
 		  user.setPassword("qq3410650");
-		  //int result = userService.addUser(user);
+		 // int result = userService.addUser(user);
 		 // System.out.println(result);
 	  }
 	 

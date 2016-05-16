@@ -10,13 +10,14 @@
          http://www.springframework.org/schema/aop/spring-aop-4.0.xsd
          http://www.springframework.org/schema/tx 
          http://www.springframework.org/schema/tx/spring-tx-4.0.xsd">
+
 	<bean id="mail" class="org.gzccc.oa.mail.Mail">
-		<property name="name" value="${mail.name}"/>
-		<property name="host" value="${mail.host}"/>
-		<property name="sender" value="${mail.sender}"/>
-		<property name="username" value="${mail.username}"/>
-		<property name="password" value="${mail.password}"/>
+		<property name="name" value="${mail.name}" />
+		<property name="host" value="${mail.host}" />
+		<property name="sender" value="${mail.sender}" />
+		<property name="username" value="${mail.username}" />
+		<property name="password" value="${mail.password}" />
 	</bean>
-	
-	<bean id="mailUtil" class="org.gzccc.oa.mail.MailUtil"/>
+
+	<bean id="mailUtil" class="org.gzccc.oa.mail.MailUtil" />
 </beans>

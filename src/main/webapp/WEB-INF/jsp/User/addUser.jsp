@@ -44,7 +44,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<p>
 							<div class="input-group ">
 								<span class="input-group-addon">输入密码</span> 
-								<input type="text" class="form-control">
+								<input type="text" class="form-control" name="password">
 							</div>
 						</p>
 						<p>
@@ -56,13 +56,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<p>
 							<div class="input-group ">
 								<span class="input-group-addon">联系邮箱</span> 
-								<input type="text" class="form-control">
+								<input type="text" class="form-control" name="email">
+							</div>
+						</p>
+						<p>
+							<div class="input-group ">
+								<span class="input-group-addon">　昵称　</span> 
+								<input type="text" class="form-control" name="name">
 							</div>
 						</p>
 						<p>
 							<div class="input-group ">
 								<span class="input-group-addon">联系电话</span> 
-								<input type="text" class="form-control">
+								<input type="text" class="form-control" name="mobile">
 							</div>
 						</p>
 						<!-- 选择头像 -->

@@ -13,13 +13,23 @@ import org.springframework.stereotype.Service;
 */
 @Service("mailService")
 public class MailService {
-	//@Inject
+	@Inject
 	private MailUtil mailUtil;
-	//@Inject
+	@Inject
 	private Mail mail;
-	public boolean send(){
-		System.out.println(mail);
-		return false;
+	
+	/**
+	 * 发送邮件
+	 * @param receiver 收件人邮件
+	 * @param subject 主题
+	 * @param message 内容
+	 * @return
+	 */
+	public boolean send(String receiver,String subject,String message){
+		mail.setReceiver(receiver);
+		mail.setSubject(subject);
+		mail.setMessage(message);
+		return mailUtil.send(mail);
 	}
 }
  

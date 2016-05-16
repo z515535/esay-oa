@@ -18,7 +18,8 @@
 	</select>
 	
 	<insert id="addUser">
-		insert into t_user values(#{id},#{username},#{password},#{salt})
+		insert into t_user values(#{id},#{username},#{password},#{salt},#{email},#{mobile},#{registerDate}
+		,#{activationCode},#{state},#{name})
 	</insert>
 	
 	<select id="login" resultType="User">

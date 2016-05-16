@@ -13,10 +13,13 @@ public class User {
 	@Length(min=6,max=16)  
 	private String username;
 	private String password;
+	private String name;
 	private String salt;
 	private String email;
 	private String mobile;
 	private String registerDate;
+	private String activationCode;
+	private String state;
 	
 	public User(){}
 	
@@ -67,11 +70,30 @@ public class User {
 	public void setRegisterDate(String registerDate) {
 		this.registerDate = registerDate;
 	}
+	public String getActivationCode() {
+		return activationCode;
+	}
+	public void setActivationCode(String activationCode) {
+		this.activationCode = activationCode;
+	}
+	public String getState() {
+		return state;
+	}
+	public void setState(String state) {
+		this.state = state;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
 
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", username=" + username + ", password=" + password + ", salt=" + salt + ", email="
-				+ email + ", mobile=" + mobile + ", registerDate=" + registerDate + "]";
+				+ email + ", mobile=" + mobile + ", registerDate=" + registerDate + ", activationCode=" + activationCode
+				+ ", state=" + state + "]";
 	}
 	
 }

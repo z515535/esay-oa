@@ -18,7 +18,8 @@ public class UserService implements IUserService{
 	
 	@Inject
 	private IUserDao userDao;
-	
+	@Inject
+	private MailService mailService;
 	public List<User> findList(Pages<User> pages,Map<String,Object> param) {
 		return userDao.findList(param);
 	}
@@ -27,7 +28,15 @@ public class UserService implements IUserService{
 		user.setSalt(SaltGenerator.generator());
 		//加密密码
 		user.setPassword(new Md5Hash(user.getPassword(),user.getSalt()).toHex());
-		userDao.addUser(user);
+		user.setRegisterDate(String.valueOf(System.currentTimeMillis()));
+		user.setActivationCode(new Md5Hash(user.getUsername(), user.getSalt()).toHex()); //激活码
+		int result = userDao.addUser(user);
+		if(result < 1)
+			throw new RuntimeException("注册账号出现异常");
+		boolean send = mailService.send(user.getEmail(),"注册激活" ,"欢迎"+user.getName()+",激活码:"+user.getActivationCode());
+		if(!send){
+			throw new RuntimeException("激活码发送失败");
+		}
 	}
 
 	public User login(String username) {

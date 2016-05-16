@@ -45,11 +45,13 @@ public class UserController {
 			 response) throws IOException{
 		System.out.println(user);
 		String msg = "";
-		if(result.hasErrors()){
+		/*if(result.hasErrors()){
 			msg = "{\"status\":\"error\"}";
 		} else {
 			msg = "{\"status\":\"ok\"}";
-		}
+		}*/
+		msg = "{\"status\":\"ok\"}";
+		userService.addUser(user);
 		response.getWriter().write(msg);
 	}
 }
