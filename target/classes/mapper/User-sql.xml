@@ -3,7 +3,8 @@
 <mapper namespace="org.gzccc.oa.dao.IUserDao">
 
 	<sql id="find">
-		select * from t_user
+		select id,username,password,name,salt,email,mobile,register_date as registerDate,
+		activation_code as activationCode,state from t_user
 	</sql>
 	
 	<sql id="userTerm">
@@ -26,4 +27,11 @@
 		<include refid="find"/> where username = #{username}
 	</select>
 	
+	<select id="findUser2Activation" resultType="User">
+		<include refid="find"/> where activation_code = #{activationCode}
+	</select>
+	
+	<update id="updateForState">
+		update t_user t set t.state=#{state} where t.id=#{id}
+	</update>
 </mapper>

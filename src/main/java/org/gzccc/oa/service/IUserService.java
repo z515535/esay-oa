@@ -13,4 +13,11 @@ public interface IUserService {
 	void addUser(User user);
 	
 	User login(String username);
+	
+	/**
+	 * 激活账号
+	 * @param user
+	 * @return
+	 */
+	void activationUser(String activationCode);
 }

@@ -15,6 +15,7 @@ import org.gzccc.oa.paging.Pages;
 import org.gzccc.oa.service.IUserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -53,5 +54,16 @@ public class UserController {
 		msg = "{\"status\":\"ok\"}";
 		userService.addUser(user);
 		response.getWriter().write(msg);
+	}
+	
+	@RequestMapping("/activation/{activationCode}")
+	public String activation(@PathVariable String activationCode){
+		try {
+			userService.activationUser(activationCode);
+			return "User/activationSuccess";
+		} catch (Exception e) {
+			e.printStackTrace();
+			return "User/activationError";
+		}
 	}
 }

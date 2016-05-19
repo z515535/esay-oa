@@ -95,17 +95,19 @@
 	<!-- 配置哪些方法要加入事务控制 -->
 	<tx:advice id="txAdvice" transaction-manager="transactionManager">
 		<tx:attributes>
-			<!-- 让所有的方法都加入事务管理，为了提高效率，可以把一些查询之类的方法设置为只读的事务 -->
-			<tx:method name="*" propagation="REQUIRED" read-only="true" />
-			<!-- 以下方法都是可能设计修改的方法，就无法设置为只读 -->
-			<tx:method name="add*" propagation="REQUIRED" />
-			<tx:method name="del*" propagation="REQUIRED" />
-			<tx:method name="update*" propagation="REQUIRED" />
-			<tx:method name="save*" propagation="REQUIRED" />
-			<tx:method name="clear*" propagation="REQUIRED" />
-			<tx:method name="empty*" propagation="REQUIRED" />
-			<tx:method name="init*" propagation="REQUIRED" />
-		</tx:attributes>
+            <tx:method name="add*" propagation="REQUIRED" />
+            <tx:method name="delete*" propagation="REQUIRED" />
+            <tx:method name="update*" propagation="REQUIRED" /> 
+            <tx:method name="insert*" propagation="REQUIRED" />
+            <tx:method name="save*" propagation="REQUIRED" />
+            <tx:method name="modify*" propagation="REQUIRED" />
+            <tx:method name="remove*" propagation="REQUIRED" />
+            <tx:method name="get*" read-only="true" />
+            <tx:method name="find*" read-only="true"/>
+            <tx:method name="query*" read-only="true"/>
+            <tx:method name="search*" read-only="true"/>
+            <tx:method name="*" rollback-for="Exception" propagation="REQUIRED" />
+        </tx:attributes> 
 	</tx:advice>
 
 	<!-- aop自动代理 -->
